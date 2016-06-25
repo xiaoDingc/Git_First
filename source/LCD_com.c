@@ -97,14 +97,12 @@ void RS232_Rlcd(void)//中断，接收LCD指令帧，接收结束标识置一
 		{
 			if(LCD_Rbuffer[0]!=0xcc) LCD_Rbuffer_now=0; //如果是CC也可以处理数据
 		}
-		else
-		if(LCD_Rbuffer_now==2)//第一个收到的数据必须是AA
+		else if(LCD_Rbuffer_now==2)//第一个收到的数据必须是AA
 		{
 			if(LCD_Rbuffer[1]==0xdd) LCD_Rbuffer_sign=0;//缓冲开始收数据，不能处理上次数据了
 			else					 LCD_Rbuffer_now=0; 
 		}
-		else
-		if(LCD_Rbuffer_now>=3)
+		else if(LCD_Rbuffer_now>=3)
 		{
 			if(LCD_Rbuffer_now-3>=LCD_Rbuffer[2])//等于即可
 			{
@@ -226,13 +224,8 @@ void RS232_Rlcd_button(void)//收跳转按键
 							LCD_page_sign=KEY_main_page[4];//跳回到上次最后一次的界面
 						 	LCD_page_dis=0;
 						}
-                        else if(tran_data==0&&tran_data1==20150808)//如果输入的密码一致 进入一级
-						{
-							LCD_page_sign=0x801;//跳回到上次最后一次的界面
-						 	LCD_page_dis=0;
-						}
-						else
-						if(tran_data==(password_one>>16)&&tran_data1==(password_one&0xffff))//如果输入的密码一致，进入二级84201378 0x0504CFA2
+                     
+						else if(tran_data==(password_one>>16)&&tran_data1==(password_one&0xffff))//如果输入的密码一致，进入二级84201378 0x0504CFA2
 						{
 							LCD_page_sign=KEY_main_page[5];//跳回到上次最后一次的界面
 						 	LCD_page_dis=0;
