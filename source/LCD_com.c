@@ -224,14 +224,12 @@ void RS232_Rlcd_button(void)//收跳转按键
 							LCD_page_sign=KEY_main_page[4];//跳回到上次最后一次的界面
 						 	LCD_page_dis=0;
 						}
-                     
 						else if(tran_data==(password_one>>16)&&tran_data1==(password_one&0xffff))//如果输入的密码一致，进入二级84201378 0x0504CFA2
 						{
 							LCD_page_sign=KEY_main_page[5];//跳回到上次最后一次的界面
 						 	LCD_page_dis=0;
 						}
-						else
-						if(tran_data==(password_two>>16)&&tran_data1==(password_two&0xffff))//如果输入的密码一致，进入三级3166549527 0xBCBD B617
+						else if(tran_data==(password_two>>16)&&tran_data1==(password_two&0xffff))//如果输入的密码一致，进入三级3166549527 0xBCBD B617
 						{
 							LCD_page_sign=KEY_main_page[6];//跳回到上次最后一次的界面
 						 	LCD_page_dis=0;
